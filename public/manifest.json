@@ -1,0 +1,22 @@
+{
+  "name": "Trace — Batch Sustainability Tracker",
+  "short_name": "Trace",
+  "description": "Track water, electricity, fuel, and waste per production batch.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F6F3",
+  "theme_color": "#2A6349",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables. Check .env.local')
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Server-side only — uses service role for admin operations (demo reset)
+export function getServiceClient() {
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!serviceKey) {
+    // Fall back to anon key if service role not set (RLS must be disabled)
+    return createClient(supabaseUrl, supabaseAnonKey)
+  }
+  return createClient(supabaseUrl, serviceKey)
+}
